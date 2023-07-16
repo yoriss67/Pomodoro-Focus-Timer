@@ -12,6 +12,12 @@ import Video from './Video';
 // interface ViteEnv {
 //   VITE_APP_UNSPLASH_ACCESS_KEY?: string;
 // }
+interface UnsplashResponse {
+  urls: {
+    full: string;
+  };
+}
+
 
 
 function App() {
@@ -20,7 +26,7 @@ function App() {
   useEffect(() => {
     fetch(`https://api.unsplash.com/photos/random?query=nature&client_id=${import.meta.env.VITE_APP_UNSPLASH_ACCESS_KEY}`)
 
-      .then(response => response.json())
+      .then(response => response.json() as Promise<UnsplashResponse>)
       .then(data => setBgImage(data.urls.full))
       .catch(error => console.log(error));
   }, []);
