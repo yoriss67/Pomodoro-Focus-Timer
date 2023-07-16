@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Timer from './Timer';
 import List from './List';
 import Video from './Video';
@@ -18,7 +18,6 @@ function App() {
   const [bgImage, setBgImage] = useState('');
 
   useEffect(() => {
-    // fetch('https://api.unsplash.com/photos/random?query=nature&client_id=YOUR_ACCESS_KEY')
     fetch(`https://api.unsplash.com/photos/random?query=nature&client_id=${import.meta.env.VITE_APP_UNSPLASH_ACCESS_KEY}`)
 
       .then(response => response.json())

@@ -14,7 +14,7 @@ function List() {
     checked: boolean;
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     // 🌸🤬formじゃないからいらない
     // e.preventDefault();
     setInputText(e.target.value);
