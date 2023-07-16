@@ -3,15 +3,15 @@ import Timer from './Timer';
 import List from './List';
 import Video from './Video';
 
-interface ImageData {
-  urls: {
-    full: string;
-  }
-}
+// interface ImageData {
+//   urls: {
+//     full: string;
+//   }
+// }
 
-interface ViteEnv {
-  VITE_APP_UNSPLASH_ACCESS_KEY?: string;
-}
+// interface ViteEnv {
+//   VITE_APP_UNSPLASH_ACCESS_KEY?: string;
+// }
 
 
 function App() {

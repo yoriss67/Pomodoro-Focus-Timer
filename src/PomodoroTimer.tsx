@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 
 function Break() {
   // Set the initial time to 5 minutes (in milliseconds)

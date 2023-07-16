@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import  { useState } from 'react';
 import YouTube from 'react-youtube';
 
-import { Button, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 
 // Add the function to extract video id here 🙋‍♀️
 function extractVideoId(url: string) {
