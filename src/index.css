@@ -107,6 +107,9 @@ body {
 }
 
 
+
+
+
 /* ---- */
 .todoList {
   width: 100%;
@@ -171,6 +174,10 @@ padding: 0;
 
   .timer-message {
     font-size: 1.2rem;
+}
+
+  .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-filled.MuiFormLabel-colorPrimary.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-filled.css-e4w4as-MuiFormLabel-root-MuiInputLabel-root {
+  font-size: .8rem;
 }
 
   .list {
