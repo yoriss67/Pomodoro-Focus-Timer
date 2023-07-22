@@ -27,6 +27,7 @@ const  Timer = ( ) => {
   //   const initialTime = 25 * 60 * 1000;
 
   // 🌸🌸
+  // 🤔🤔🤔🤔🤔what is * 60 * 1000; 🌸🌸🌸🌸🌸This is a way to convert minutes to milliseconds. This is because JavaScript uses milliseconds for time calculations, so if you want to represent 25 minutes, you multiply it by 60 (to convert to seconds) and then by 1000 (to convert to milliseconds).
   const mainTime = 25 * 60 * 1000;
   const breakTime = 5 * 60 * 1000;
 
@@ -55,20 +56,22 @@ const  Timer = ( ) => {
       intervalId = setInterval(() => {
         // Decrease timeRemaining by 1 second every second
         //   setTimeRemaining(time => time > 0 ? time - 1000 : 0);
-        // 🌸🌸🌸
+        // 🌸🌸🌸                                                          // 🤔🤔🤔🤔🤔what is , 0?🌸🌸🌸🌸🌸This expression is used to ensure that time never goes below zero    例）console.log(Math.max(-1, -3, -2)); // Expected output: -1
         setTimeRemaining((time) => Math.max(time - 1000, 0)); // prevent time from going below 0
       }, 1000);
     }
 
     // This function is run when the component is unmounted, clearing the interval
+    // 🤔🤔🤔🤔🤔what is clearInterval?🌸🌸🌸🌸🌸 When you don't need to run that code anymore, you call clearInterval,
     return () => clearInterval(intervalId);
     // }, []);  // Empty dependency array means this effect runs once on mount and not again
   }, [isRunning]); // This effect runs again whenever timerActive changes
 
   // Convert timeRemaining from milliseconds to minutes and seconds for display
+  // 🤔🤔🤔🤔🤔how to do math?🌸🌸🌸🌸🌸This is how you convert milliseconds back to minutes. 
   const minutes = Math.floor(timeRemaining / (60 * 1000));
   const seconds = Math.floor((timeRemaining % (60 * 1000)) / 1000);
-
+console.log(timeRemaining)
   // 🌸🌸
   const [playSound, setPlaySound] = useState(false);
 
@@ -98,6 +101,8 @@ const  Timer = ( ) => {
   };
 
   // 🌸🌸
+  // 🤔🤔🤔🤔🤔why there are so many dependency?  [timeRemaining, isBreak, isRunning]
+  // 🌸🌸🌸🌸🌸 to make sure the effect is run whenever any of these variables changes. This is how useEffect knows when to rerun its side-effect (in this case, checking whether the timer has run out and if it has, switching the break/main timer and resetting the time).
   useEffect(() => {
     if (timeRemaining === 0 && isRunning) {
       //   setIsBreak(!isBreak); // Switch between break and main timer
@@ -153,8 +158,8 @@ const  Timer = ( ) => {
         <h2 className='timer-message'>{isBreak ? 'Time for a break ! 5 mins' : 'Time to work for 25 mins !'}</h2>
       ) : (
         <p className='time'>
-          Time Remaining: {minutes}:{seconds < 10 ? '0' : ''}
-          {seconds}
+                                                                   {/* // 🤔🤔🤔🤔🤔why 10? 　　🌸🌸🌸🌸🌸This is a way to pad single digit seconds with a leading zero. */}
+          Time Remaining: {minutes}:{seconds < 10 ? '0' : ''}{seconds}
         </p>
       )}
 

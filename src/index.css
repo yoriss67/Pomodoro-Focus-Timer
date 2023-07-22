@@ -5,14 +5,13 @@ font-family: 'Proza Libre', sans-serif;
 font-family: 'Rubik', sans-serif;
 */
 
-
 body {
   min-height: 100vh;
   width: 100%;
   margin: 0;
   padding: 10vh 0;
   font-family: 'Abel', sans-serif;
-  color: #1565C0;
+  color: #1565c0;
   color: #406796;
   position: relative;
 }
@@ -25,7 +24,7 @@ body {
   left: 0;
   /* background-image: url(https://images.unsplash.com/photo-1688499693696-9c754d94a56e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80); */
   z-index: -1;
-  opacity: .2;
+  opacity: 0.2;
   background-size: cover;
 }
 
@@ -40,9 +39,7 @@ body {
 }
 
 .title {
-
 }
-
 
 /* Timer */
 .timer {
@@ -50,7 +47,6 @@ body {
   flex-direction: column;
   gap: 5vh;
 }
-
 
 .timer-message {
   /* Add your styles here */
@@ -79,10 +75,9 @@ body {
   /* Add your styles here */
 }
 
-
 /* List */
 .list {
-  width:100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -96,19 +91,13 @@ body {
   align-items: center;
 }
 
-.inputText{
-
+.inputText {
 }
-
 
 .submitButton {
   height: fit-content;
   align-items: center;
 }
-
-
-
-
 
 /* ---- */
 .todoList {
@@ -119,9 +108,8 @@ body {
   list-style: none;
   box-sizing: border-box;
 
-padding: 0;
+  padding: 0;
 }
-
 
 .todo {
   width: 100%;
@@ -132,7 +120,226 @@ padding: 0;
   margin: 2vh auto;
 }
 
+/* History??????? */
+.content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
 
+.list {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.history {
+  transition: all 0.3s ease;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  /* overflow-x: hidden; */
+  background-color: #42658d;
+  color: aliceblue;
+
+  padding: 2% 0;
+}
+
+.history.open {
+  width: 20%;
+}
+
+.history.close {
+  width: 5%;
+}
+
+/* 🌸🌸 */
+
+/* .historyButton {
+  position: relative;
+}
+
+.historyButton::before,
+.historyButton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.3s ease;
+}
+
+.historyButton::before {
+  background-image: url(/public/round-arrow.svg);
+  background-size: cover;
+  background-color: blue;
+
+  opacity: 1;
+}
+
+.historyButton::after {
+  background-image: url(/public/other-arrow.svg);
+  background-size: cover;
+  background-color: #FFf;
+
+  opacity: 0;
+}
+
+開いたらみえない
+.historyButton.open::before {
+  opacity: 0;
+}
+
+開いたらみえる
+.historyButton.open::after {
+  opacity: 1;
+} */
+
+
+/* 🌸🌸 */
+
+.historyButton.opened {
+  transform: translateX(-50%);
+  position: fixed;
+  right: 2%;
+  z-index: -1;
+  border: transparent;
+  background-color: transparent;
+  color: #fff;
+  background-image: url(/public/round-arrowW.svg);
+  background-size: cover;
+  background-color: transparent;
+
+  rotate: 90deg;
+  top: 5%;
+
+  width: 20px;
+  height: 20px;
+
+}
+
+.historyButton.closed {
+  border: none;
+  width: 20px;
+  height: 20px;
+  transform: translateX(-50%);
+  position: fixed;
+  right: 6%;
+  top: 2%;
+  background-image: url(/public/round-arrow.svg);
+  background-size: cover;
+  background-color: transparent;
+  rotate: -90deg;
+}
+
+.historyButton.closed:focus {
+  outline: none;
+}
+
+/* ------------------------ */
+
+/* .arrow{
+  transform:translateX(-50%) ;
+  position: fixed;
+  right: 30%;
+  z-index: -1;
+  rotate: 180deg;
+
+
+  position:relative;
+  width:30px;
+  height: 30px;
+  cursor:pointer;
+  transition:0.5s;
+  overflow:hidden;
+}
+
+.arrow:after{
+  position:absolute;
+  display:block;
+  content:"";
+  color:#1565c0;
+  width: 20px;
+  height: 15px;
+  top:-3px;
+  border-bottom:solid 2px;
+  transform:translateX(-2px);
+}
+
+三角
+.arrow:before{
+  position:absolute;
+  display:block;
+  content:"";
+  color:#1565c0;
+  width: 8px;
+  height: 8px;
+  border-top:solid 2px;
+  border-left:solid 2px;
+  top:50%;
+  left:2px;
+  transform-origin:0% 0%;
+  transform:rotate(-45deg);
+
+} */
+
+/* ------------------------ */
+
+.completedTasks {
+  margin: 5vh auto;
+}
+
+.completedList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.completedTodo {
+  display: flex;
+  justify-content: left;
+  gap: 0.5vw;
+  margin: 10px auto;
+  width: 80%;
+  padding: 0;
+  height: 5vh;
+  align-items: center;
+}
+.todoText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 3%;
+}
+
+.todoText p {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.check {
+  padding: 2%;
+  border-right: #fff 1px solid; 
+}
+
+.date {
+  color: #fff;
+}
+
+.completedTasks.close {
+  display: none;
+}
+
+.completedList.close {
+  display: none;
+}
 
 /* Youtube */
 .youtube {
@@ -151,17 +358,13 @@ padding: 0;
 .youtube-frame {
   width: 100%;
   margin: 0 auto;
-
 }
-
 
 .youtube-frame iframe {
   width: 100%;
   height: 100%;
   min-height: 40vh;
-
 }
-
 
 @media all and (max-width: 768px) {
   .app {
@@ -174,16 +377,15 @@ padding: 0;
 
   .timer-message {
     font-size: 1.2rem;
-}
+  }
 
   .MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-filled.MuiFormLabel-colorPrimary.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-filled.css-e4w4as-MuiFormLabel-root-MuiInputLabel-root {
-  font-size: .8rem;
-}
+    font-size: 0.8rem;
+  }
 
   .list {
     width: 90%;
   }
-
 
   .youtube {
     width: 90%;

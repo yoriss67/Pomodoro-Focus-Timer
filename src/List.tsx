@@ -1,20 +1,30 @@
 import React, { useState } from 'react';
 import { Button, TextField } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+
+// 🌸🕰️
+import History from './History'; 
+
 
 // 🙋‍♀️🤔
 // ①textのstate②todo配列のstateを作成
 
 function List() {
   const [inputText, setInputText] = useState('');
+  // 🤔🤔🤔🤔🤔why [] 🌸🌸🌸🌸🌸, [] is an empty array, which means that todos will start off as an empty array.
   const [todos, setTodos] = useState<Todo[]>([]);
+  // 🌸🕰️ = history storage
+  const [history, setHistory] = useState<Todo[]>([]);
 
   type Todo = {
     id: number;
     inputValue: string;
     checked: boolean;
+    completedAt?: Date; // This property will hold the time of task completion.
   };
 
-  const handleChange = (e:React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // 🤔🤔🤔🤔🤔why two "HTML..."" 🌸🌸🌸🌸🌸This is more general than HTMLInputElement. It means that the event target can be any HTML element, not just an input element.
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     // 🌸🤬formじゃないからいらない
     // e.preventDefault();
     setInputText(e.target.value);
@@ -54,12 +64,14 @@ function List() {
         //      ↓👩‍🎓👩‍🎓今打ってるvalue
         todo.inputValue = inputValue;
       }
+      // 🤔🤔🤔🤔🤔why todo🌸🌸🌸🌸🌸This line is in a .map function that is transforming the todos array.
       return todo;
     });
     setTodos(newTodos);
   };
 
   // 28:30~
+  // 🤔🤔🤔🤔🤔is it default that when i click the checkbox, i cant edit TextField  className="inputText" ?🌸🌸🌸🌸🌸ここですdisabled={todo.checked}
   const handleChecked = (id: number, checked: boolean) => {
     console.log(id, checked);
 
@@ -67,10 +79,21 @@ function List() {
       if (todo.id === id) {
         //  ↓👩‍🎓👩‍🎓今打ってるvalueを前のinputValueに入れる  31:20👩‍🎓🤬「！」入れる！！！
         todo.checked = !checked;
+        todo.completedAt = new Date();
       }
       return todo;
     });
-    setTodos(newTodos);
+
+    // 🌸🕰️
+    // New: Filter out the completed todo and add it to the history
+    const completedTodo = newTodos.find((todo) => todo.id === id && todo.checked);
+    if (completedTodo) {
+      setTodos(newTodos.filter((todo) => todo.id !== id)); // Remove the completed todo from todos
+      setHistory([completedTodo, ...history]); // Add the completed todo to the history
+      console.log(history, history);
+    } else {
+      setTodos(newTodos);
+    }
   };
 
   const handleDelete = (id: number) => {
@@ -80,7 +103,8 @@ function List() {
   };
 
   return (
-    <div className='list'>
+    <div className="content">
+    <div className="list">
       <form action="" className="form" onSubmit={(e) => handleSubmit(e)}>
         <TextField
           id="filled-basic"
@@ -90,7 +114,9 @@ function List() {
           onChange={(e) => handleChange(e)}
           className="inputText"
         />
-<Button variant="contained"   type="submit" value="create" className="submitButton" >Create</Button>
+        <Button variant="contained" type="submit" value="create" className="submitButton">
+          Create
+        </Button>
       </form>
       {/* タスク設定が完了したら */}
       {/*ここから🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️🙋‍♀️  */}
@@ -98,7 +124,7 @@ function List() {
       <ul className="todoList">
         {/* 🌸🤬(todo) => のあとはかっこ！！ */}
         {todos.map((todo) => (
-          <li key={todo.id} className='todo'>
+          <li key={todo.id} className="todo">
             <TextField
               id="standard-basic"
               label=""
@@ -116,10 +142,16 @@ function List() {
               // 🌸🤬
               onChange={() => handleChecked(todo.id, todo.checked)}
             />
-            <Button variant="outlined"  onClick={() => handleDelete(todo.id)}>Delete</Button>
+            <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleDelete(todo.id)}>
+              Delete
+            </Button>
           </li>
         ))}
       </ul>
+
+    </div>
+      {/* 🌸🕰️ */}
+      <History history={history} />
     </div>
   );
 }

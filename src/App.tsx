@@ -33,6 +33,7 @@ function App() {
 
   return (
     <div className='app'>
+      
       <div className="bg" style={{ backgroundImage: `url(${bgImage})` }}></div>
       <h1 className="title">Pomodoro Focus Timer🕊️⌛</h1>
       <Timer />
