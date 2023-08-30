@@ -11,6 +11,7 @@ type HistoryProps = {
   history: Todo[];
 };
 
+//
 const History: React.FC<HistoryProps> = ({ history }) => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
